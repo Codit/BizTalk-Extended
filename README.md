@@ -1,12 +1,6 @@
-Project "Mjolnir"
+Mjolnir
 ======================
-_"Mjolnir"_ is an open-source project that you'll be able to use in your BizTalk projects.
-
-----------
-
-**Note** We're starting up the project & we will pushing changes to this repository soon.
-
-----------
+_"Mjolnir"_ is an open-source project that will take your BizTalk development to the next level.
 
 
 ## License
