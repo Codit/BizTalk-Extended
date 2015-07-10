@@ -15,8 +15,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{CB2591
 		BizTalk.Extended.snk = BizTalk.Extended.snk
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Core", "BizTalk.Extended.Core\BizTalk.Extended.Core.csproj", "{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FBFEF9E2-F435-4A58-BDD8-D7BFABE12312}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Core.UnitTests", "BizTalk.Extended.Core.UnitTests\BizTalk.Extended.Core.UnitTests.csproj", "{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD} = {FBFEF9E2-F435-4A58-BDD8-D7BFABE12312}
 	EndGlobalSection
 EndGlobal
