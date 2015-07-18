@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFE2EB21-14F3-4138-A4A9-83E4A6C44932}</ProjectGuid>
+    <ProjectGuid>{07824DCB-7A52-4739-A83D-ADC2F310F5A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BizTalk.Extended.Core</RootNamespace>
-    <AssemblyName>BizTalk.Extended.Core</AssemblyName>
+    <RootNamespace>BizTalk.Extended.Pipeline.Core</RootNamespace>
+    <AssemblyName>BizTalk.Extended.Pipeline.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,21 +39,15 @@
     <Reference Include="Microsoft.BizTalk.Pipeline">
       <HintPath>..\..\lib\Microsoft.BizTalk.Pipeline.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.XLANGs.BaseTypes, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.XLANGs.BaseTypes">
       <HintPath>..\..\lib\Microsoft.XLANGs.BaseTypes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\ContextPropertyNotFoundException.cs" />
-    <Compile Include="Guards\Guard.cs" />
+    <Compile Include="Extensions\BaseMessageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +56,12 @@
     </None>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BizTalk.Extended.Core\BizTalk.Extended.Core.csproj">
+      <Project>{dfe2eb21-14f3-4138-a4a9-83e4a6c44932}</Project>
+      <Name>BizTalk.Extended.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
