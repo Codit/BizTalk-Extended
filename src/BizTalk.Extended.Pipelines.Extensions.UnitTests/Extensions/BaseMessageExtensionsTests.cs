@@ -53,7 +53,7 @@ namespace BizTalk.Extended.Pipeline.Core.UnitTests.Extensions
             // Assert
             Assert.Equal(ExpectedAction, action);
         }
-        
+
         [Fact]
         public void ReadContextProperty_OptionalPropertyOfTypeStringContainsNull_Succeeds()
         {
@@ -70,3 +70,4 @@ namespace BizTalk.Extended.Pipeline.Core.UnitTests.Extensions
         }
     }
 }
+
