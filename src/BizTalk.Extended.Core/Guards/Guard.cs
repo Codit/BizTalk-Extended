@@ -55,7 +55,7 @@ namespace BizTalk.Extended.Core.Guards
         [DebuggerStepThrough]
         public static void Against(bool condition, string paramName)
         {
-            Guard.NotNull(paramName, "paramName");
+            Guard.NotNullOrWhitespace(paramName, "paramName");
 
             if (condition)
             {

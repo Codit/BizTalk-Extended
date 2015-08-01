@@ -203,5 +203,81 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             // Act & Assert
             Guards.Guard.NotNull(parameterValue, parameterName);
         }
+
+        [Fact]
+        public void Against_ConditionHasBeenMetParameterNameHasText_ThrowsArgumentException()
+        {
+            // Assert
+            string parameterName = "MyParameter";
+            bool condition = (1 == 1);
+
+            // Act
+            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+        }
+
+        [Fact]
+        public void Against_ConditionHasNotBeenMetParameterNameHasText_Succeeds()
+        {
+            // Assert
+            string parameterName = "MyParameter";
+            bool condition = (1 == 0);
+
+            // Act
+            Guards.Guard.Against(condition, parameterName);
+        }
+
+        [Fact]
+        public void Against_ConditionHasNotBeenMetParameterNameIsEmpty_ThrowsArgumentException()
+        {
+            // Assert
+            string parameterName = "";
+            bool condition = (1 == 0);
+
+            // Act
+            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+        }
+
+        [Fact]
+        public void Against_ConditionHasNotBeenMetParameterNameIsWhitespace_ThrowsArgumentException()
+        {
+            // Assert
+            string parameterName = " ";
+            bool condition = (1 == 0);
+
+            // Act
+            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+        }
+
+        [Fact]
+        public void Against_ConditionHasNotBeenMetParameterNameIsNull_ThrowsArgumentNullException()
+        {
+            // Assert
+            string parameterName = null;
+            bool condition = (1 == 0);
+
+            // Act
+            Assert.Throws<ArgumentNullException>(() => Guards.Guard.Against(condition, parameterName));
+        }
+
+        [Fact]
+        public void AgainstTyped_ConditionHasBeenMet_ThrowsSpecifiedException()
+        {
+            // Assert
+            bool condition = (1 == 1);
+
+            // Act
+            Assert.Throws<DivideByZeroException>(() => Guards.Guard.Against<DivideByZeroException>(condition));
+        }
+
+        [Fact]
+        public void AgainstTyped_ConditionHasNotBeenMet_Succeeds()
+        {
+            // Assert
+            string parameterName = "MyParameter";
+            bool condition = (1 == 0);
+
+            // Act
+            Guards.Guard.Against(condition, parameterName);
+        }
     }
 }
