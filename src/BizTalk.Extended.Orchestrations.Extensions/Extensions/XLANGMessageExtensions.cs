@@ -2,9 +2,6 @@
 using BizTalk.Extended.Core.Guards;
 using Microsoft.XLANGs.BaseTypes;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BizTalk.Extended.Core.Extensions
 {

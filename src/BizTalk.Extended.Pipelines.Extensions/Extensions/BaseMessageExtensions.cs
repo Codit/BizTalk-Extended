@@ -7,15 +7,26 @@ namespace Microsoft.BizTalk.Message.Interop
 {
     public static class BaseMessageExtensions
     {
-        // TODO: introduce message extension interface to ensure that XLANG & BaseMessage have the same capabilities
-
-                public static void PromoteContextProperty<TContextProperty>(this IBaseMessage msg, object value) where TContextProperty : MessageContextPropertyBase, new()
+        /// <summary>
+        /// Promotes a property in the the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="value">Requested value of the property</param>
+        public static void PromoteContextProperty<TContextProperty>(this IBaseMessage msg, object value) where TContextProperty : MessageContextPropertyBase, new()
         {
             var contextProperty = new TContextProperty();
 
             PromoteContextProperty(msg, contextProperty.Name.Name, contextProperty.Name.Namespace, value);
         }
 
+        /// <summary>
+        /// Promotes a property in the the context of the message
+        /// </summary>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="name">Name of the property</param>
+        /// <param name="ns">Namespace of the property</param>
+        /// <param name="value">Requested value of the property</param>
         public static void PromoteContextProperty(this IBaseMessage message, string name, string ns, object value)
         {
             Guard.NotNull(message, "message");
@@ -26,6 +37,12 @@ namespace Microsoft.BizTalk.Message.Interop
             message.Context.Promote(name, ns, value);
         }
 
+        /// <summary>
+        /// Writes to the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="value">Requested value of the property</param>
         public static void WriteContextProperty<TContextProperty>(this IBaseMessage msg, object value) where TContextProperty : MessageContextPropertyBase, new()
         {
             Guard.NotNull(msg, "msg");
@@ -42,26 +59,60 @@ namespace Microsoft.BizTalk.Message.Interop
             msg.Context.Write(contextProperty.Name.Name, contextProperty.Name.Namespace, actualValue);
         }
 
+        /// <summary>
+        /// Reads a mandatory property in the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <returns>Value from the property, if present</returns>
+        /// <exception cref="BizTalk.Extended.Core.Exceptions.ContextPropertyNotFoundException">Thrown when a mandatory property is not present</exception>
         public static TExpected ReadContextProperty<TContextProperty, TExpected>(this IBaseMessage msg)
             where TContextProperty : MessageContextPropertyBase, new()
         {
             return ReadContextProperty<TContextProperty, TExpected>(msg, true);
         }
 
-        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this IBaseMessage msg, bool isMandatory)
-            where TContextProperty : MessageContextPropertyBase, new()
+        /// <summary>
+        /// Reads a property in the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="isMandatory">Indication if it is mandatory for the property to be present</param>
+        /// <returns>Value from the property, if present</returns>
+        /// <exception cref="BizTalk.Extended.Core.Exceptions.ContextPropertyNotFoundException">Thrown when a mandatory property is not present</exception>
+        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this IBaseMessage msg, bool isMandatory) where TContextProperty : MessageContextPropertyBase, new()
         {
             var contextProperty = new TContextProperty();
 
             return ReadContextProperty<TExpected>(msg, contextProperty.Name.Name, contextProperty.Name.Namespace, isMandatory);
         }
 
-        public static T ReadContextProperty<T>(this IBaseMessage msg, string name, string ns)
+        /// <summary>
+        /// Reads a property in the context of the message
+        /// </summary>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="name">Name of the property</param>
+        /// <param name="ns">Namespace of the property</param>
+        /// <returns>Value from the property, if present</returns>
+        public static TExpected ReadContextProperty<TExpected>(this IBaseMessage msg, string name, string ns)
         {
-            return ReadContextProperty<T>(msg, name, ns, true);
+            return ReadContextProperty<TExpected>(msg, name, ns, true);
         }
 
-        public static T ReadContextProperty<T>(this IBaseMessage msg, string name, string ns, bool isMandatory)
+        /// <summary>
+        /// Reads a property in the context of the message
+        /// </summary>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="msg">BizTalk pipeline message</param>
+        /// <param name="name">Name of the property</param>
+        /// <param name="ns">Namespace of the property</param>
+        /// <param name="isMandatory">Indication if it is mandatory for the property to be present</param>
+        /// <returns>Value from the property, if present</returns>
+        /// <exception cref="BizTalk.Extended.Core.Exceptions.ContextPropertyNotFoundException">Thrown when a mandatory property is not present</exception>
+        public static TExpected ReadContextProperty<TExpected>(this IBaseMessage msg, string name, string ns, bool isMandatory)
         {
             Guard.NotNull(msg, "msg");
             Guard.Against(msg.Context == null, "msg");
@@ -74,23 +125,23 @@ namespace Microsoft.BizTalk.Message.Interop
                 throw new ContextPropertyNotFoundException(name, ns);
             }
 
-            if (typeof(T).IsEnum)
+            if (typeof(TExpected).IsEnum)
             {
-                return (T)Enum.Parse(typeof(T), value as string);
+                return (TExpected)Enum.Parse(typeof(TExpected), value as string);
             }
 
-            Type underlyingType = Nullable.GetUnderlyingType(typeof(T));
+            Type underlyingType = Nullable.GetUnderlyingType(typeof(TExpected));
             if (underlyingType != null && underlyingType.IsEnum)
             {
                 if (value == null)
                 {
-                    return default(T);
+                    return default(TExpected);
                 }
 
-                return (T)Enum.Parse(underlyingType, value as string);
+                return (TExpected)Enum.Parse(underlyingType, value as string);
             }
 
-            return (T)value;
+            return (TExpected)value;
         }
     }
 }
