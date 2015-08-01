@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BizTalk.Extended.Core.Guards
 {
@@ -12,7 +8,7 @@ namespace BizTalk.Extended.Core.Guards
         [DebuggerStepThrough]
         public static void NotNull<T>(T value, string paramName) where T : class
         {
-            if (paramName == null)
+            if (string.IsNullOrWhiteSpace(paramName))
             {
                 throw new ArgumentNullException("paramName");
             }
