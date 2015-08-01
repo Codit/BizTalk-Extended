@@ -8,10 +8,7 @@ namespace BizTalk.Extended.Core.Guards
         [DebuggerStepThrough]
         public static void NotNull<T>(T value, string paramName) where T : class
         {
-            if (string.IsNullOrWhiteSpace(paramName))
-            {
-                throw new ArgumentNullException("paramName");
-            }
+            Guard.NotNullOrWhitespace(paramName, "paramName");
 
             if (value == null)
             {
@@ -22,12 +19,36 @@ namespace BizTalk.Extended.Core.Guards
         [DebuggerStepThrough]
         public static void NotNullOrEmpty(string value, string paramName)
         {
-            Guard.NotNull(paramName, "paramName");
+            Guard.NotNullOrWhitespace(paramName, "paramName");
             Guard.NotNull(value, paramName);
 
             if (value.Length == 0)
             {
                 throw new ArgumentException("Value cannot be empty", paramName);
+            }
+        }
+
+        [DebuggerStepThrough]
+        public static void NotNullOrWhitespace(string value, string paramName)
+        {
+            if (paramName == null)
+            {
+                throw new ArgumentNullException("paramName");
+            }
+
+            if (value == null)
+            {
+                throw new ArgumentNullException(paramName);
+            }
+
+            if (string.IsNullOrWhiteSpace(paramName))
+            {
+                throw new ArgumentException("paramName");
+            }
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentException(paramName);
             }
         }
 
