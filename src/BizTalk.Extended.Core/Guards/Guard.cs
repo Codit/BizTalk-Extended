@@ -12,7 +12,7 @@ namespace BizTalk.Extended.Core.Guards
 
             if (value == null)
             {
-                throw new ArgumentNullException(paramName);
+                throw new ArgumentNullException(paramName, string.Format("The parameter '{0}' is Null.", paramName));
             }
         }
 
@@ -43,12 +43,12 @@ namespace BizTalk.Extended.Core.Guards
 
             if (string.IsNullOrWhiteSpace(paramName))
             {
-                throw new ArgumentException("paramName");
+                throw new ArgumentException("Value cannot be empty or whitespace", "paramName");
             }
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException(paramName);
+                throw new ArgumentException("Value cannot be empty or whitespace", paramName);
             }
         }
 
@@ -59,7 +59,7 @@ namespace BizTalk.Extended.Core.Guards
 
             if (condition)
             {
-                throw new ArgumentException(paramName);
+                throw new ArgumentException("A certain condition has been met.", paramName);
             }
         }
 

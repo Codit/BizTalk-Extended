@@ -25,7 +25,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "";
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = " ";
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = null;
 
             // Act
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentNullException>("paramName", () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>(parameterName, () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>(parameterName, () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
+            Assert.Throws<ArgumentNullException>(parameterName, () => Guards.Guard.NotNullOrWhitespace(parameterValue, parameterName));
         }
 
         [Fact]
@@ -113,7 +113,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNullOrEmpty(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>(parameterName, () => Guards.Guard.NotNullOrEmpty(parameterValue, parameterName));
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.NotNullOrEmpty(parameterValue, parameterName));
+            Assert.Throws<ArgumentNullException>(parameterName, () => Guards.Guard.NotNullOrEmpty(parameterValue, parameterName));
         }
 
         [Fact]
@@ -135,7 +135,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "MyParameter";
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.NotNull(parameterValue, parameterName));
+            Assert.Throws<ArgumentNullException>(parameterName, () => Guards.Guard.NotNull(parameterValue, parameterName));
         }
 
         [Fact]
@@ -146,7 +146,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.NotNull(parameterValue, parameterName));
+            Assert.Throws<ArgumentNullException>("paramName", () => Guards.Guard.NotNull(parameterValue, parameterName));
         }
 
         [Fact]
@@ -157,7 +157,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = "";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNull(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.NotNull(parameterValue, parameterName));
         }
 
         [Fact]
@@ -168,7 +168,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             string parameterName = " ";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => Guards.Guard.NotNull(parameterValue, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.NotNull(parameterValue, parameterName));
         }
 
         [Fact]
@@ -212,7 +212,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             bool condition = (1 == 1);
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+            Assert.Throws<ArgumentException>(parameterName, () => Guards.Guard.Against(condition, parameterName));
         }
 
         [Fact]
@@ -234,7 +234,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             bool condition = (1 == 0);
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.Against(condition, parameterName));
         }
 
         [Fact]
@@ -245,7 +245,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             bool condition = (1 == 0);
 
             // Act
-            Assert.Throws<ArgumentException>(() => Guards.Guard.Against(condition, parameterName));
+            Assert.Throws<ArgumentException>("paramName", () => Guards.Guard.Against(condition, parameterName));
         }
 
         [Fact]
@@ -256,7 +256,7 @@ namespace BizTalk.Extended.Core.UnitTests.Guard
             bool condition = (1 == 0);
 
             // Act
-            Assert.Throws<ArgumentNullException>(() => Guards.Guard.Against(condition, parameterName));
+            Assert.Throws<ArgumentNullException>("paramName", () => Guards.Guard.Against(condition, parameterName));
         }
 
         [Fact]
