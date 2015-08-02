@@ -1,6 +1,7 @@
 ﻿using BizTalk.Extended.Core.Exceptions;
 using Microsoft.BizTalk.Message.Interop;
 using Moq;
+using System;
 using Xunit;
 
 namespace BizTalk.Extended.Pipeline.Core.UnitTests.Extensions
@@ -9,6 +10,249 @@ namespace BizTalk.Extended.Pipeline.Core.UnitTests.Extensions
     {
         private const string ActionPropertyName = "Action";
         private const string ActionPropertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+
+        [Fact]
+        public void WriteContextProperty_MessageIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            IBaseMessage message = (IBaseMessage)null;
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentNullException>("message", () => message.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_MessageContextIsNull_ThrowsArgumentException()
+        {
+            // TOCOVER test
+            // Arrange
+            var mockedMessage = new Mock<IBaseMessage>();
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentException>("message", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNameIsEmpty_ThrowsArgumentException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentException>("name", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNameIsWhitespace_ThrowsArgumentException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = " ";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentException>("name", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNameIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = null;
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentNullException>("name", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNamespaceIsEmpty_ThrowsArgumentException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentException>("ns", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNamespaceIsWhitespace_ThrowsArgumentException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = " ";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentException>("ns", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+
+        }
+
+        [Fact]
+        public void WriteContextProperty_PropertyNamespaceIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = null;
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            Assert.Throws<ArgumentNullException>("ns", () => mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextProperty_ValidInput_Succeeds()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            mockedMessage.Object.WriteContextProperty(propertyName, propertyNamespace, propertyValue);
+
+            // Assert
+            mockedMessageContext.Verify(ctx => ctx.Write(propertyName, propertyNamespace, propertyValue), Times.Once);
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_MessageIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            IBaseMessage message = (IBaseMessage)null;
+            object propertyValue = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("message", () => message.WriteContextProperty<WCF.Action>(propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_MessageContextIsNull_ThrowsArgumentException()
+        {
+            // Arrange
+            var mockedMessage = new Mock<IBaseMessage>();
+            object propertyValue = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>("message", () => mockedMessage.Object.WriteContextProperty<WCF.Action>(propertyValue));
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_PropertyValueIsNull_Succeeds()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = null;
+
+            // Act
+            mockedMessage.Object.WriteContextProperty<WCF.Action>(propertyValue);
+
+            // Assert
+            mockedMessageContext.Verify(ctx => ctx.Write(propertyName, propertyNamespace, propertyValue), Times.Once);
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_PropertyValueIsEmpty_Succeeds()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = "";
+
+            // Act
+            mockedMessage.Object.WriteContextProperty<WCF.Action>(propertyValue);
+
+            // Assert
+            mockedMessageContext.Verify(ctx => ctx.Write(propertyName, propertyNamespace, propertyValue), Times.Once);
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_PropertyValueHasWhitespace_Succeeds()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = " ";
+
+            // Act
+            mockedMessage.Object.WriteContextProperty<WCF.Action>(propertyValue);
+
+            // Assert
+            mockedMessageContext.Verify(ctx => ctx.Write(propertyName, propertyNamespace, propertyValue), Times.Once);
+        }
+
+        [Fact]
+        public void WriteContextPropertyTyped_PropertyValueHasValue_Succeeds()
+        {
+            // Arrange
+            var mockedMessageContext = new Mock<IBaseMessageContext>();
+            var mockedMessage = new Mock<IBaseMessage>();
+            mockedMessage.SetupGet(msg => msg.Context).Returns(mockedMessageContext.Object);
+
+            string propertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
+            string propertyName = "Action";
+            object propertyValue = "MyValue";
+
+            // Act
+            mockedMessage.Object.WriteContextProperty<WCF.Action>(propertyValue);
+
+            // Assert
+            mockedMessageContext.Verify(ctx => ctx.Write(propertyName, propertyNamespace, propertyValue), Times.Once);
+        }
 
         [Fact]
         public void ReadContextProperty_IsMandatoryButPropertyNotPresent_ThrowsContextPropertyNotFoundException()
