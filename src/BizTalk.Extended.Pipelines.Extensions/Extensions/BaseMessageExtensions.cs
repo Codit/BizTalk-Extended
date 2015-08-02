@@ -18,8 +18,15 @@ namespace Microsoft.BizTalk.Message.Interop
         public static void PromoteContextProperty<TContextProperty>(this IBaseMessage message, object value) where TContextProperty : MessageContextPropertyBase, new()
         {
             Guard.NotNull(message, "message");
+            Guard.Against(message.Context == null, "message");
 
             var contextProperty = new TContextProperty();
+            object actualValue = value;
+
+            if (typeof(TContextProperty).IsEnum || value is Enum)
+            {
+                actualValue = value.ToString();
+            }
 
             PromoteContextProperty(message, contextProperty.Name.Name, contextProperty.Name.Namespace, value);
         }
@@ -36,6 +43,7 @@ namespace Microsoft.BizTalk.Message.Interop
             Guard.NotNull(message, "message");
             Guard.NotNullOrWhitespace(name, "name");
             Guard.NotNullOrWhitespace(ns, "ns");
+            Guard.Against(message.Context == null, "message");
 
             message.Context.Promote(name, ns, value);
         }
