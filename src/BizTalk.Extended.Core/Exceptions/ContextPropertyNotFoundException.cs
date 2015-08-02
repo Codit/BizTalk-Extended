@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BizTalk.Extended.Core.Exceptions
 {
-     [Serializable]
+    [Serializable]
     public class ContextPropertyNotFoundException : Exception
     {
         public string ContextPropertyName { get; set; }
