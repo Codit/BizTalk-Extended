@@ -10,7 +10,7 @@ BizTalk<Extended\> offers the following features:
 ## Planned features
 - Generic pipeline component
 
-For a full list, have a look at the `feature`-issues [here](./labels/feature).
+For a full list, have a look at the `feature`-issues [here](https://github.com/CoditEU/Mjolnir/labels/feature).
 
 # Usage
 ## Interacting with message context
