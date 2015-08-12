@@ -38,12 +38,14 @@ TBW
 
 	message.PromoteContextProperty<WCF.Action>("Send");
 
+// TODO: Include screenshot of the tracking
+
 # Requirements
 In order to use this library you should meet these requirements:
 
 - BizTalk 2013 R2 or higher
-- Visual Studio 2013+
-- .Net Framework 4.5+
+- Visual Studio 2013 or higher
+- .Net Framework 4.5 or higher
 
 # License
 This project is licensed under the [MIT license](license).
