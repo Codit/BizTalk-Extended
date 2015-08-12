@@ -24,11 +24,11 @@ You can find it here:
 
 ### Reading
 
-	var action = message.ReadContextProperty<WCF.Action, string>();
+	string action = message.ReadContextProperty<WCF.Action, string>();
 
 TBW
 
-	var action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
+	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
 
 ### Writing & Promoting
 
