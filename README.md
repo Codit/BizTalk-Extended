@@ -2,6 +2,9 @@ BizTalk<Extended\>
 ======================
 _"BizTalk<Extended\>"_ is an open-source project that will take your BizTalk development to the next level.
 
+# Install
+// TODO: Add NuGet command
+
 # Features at a glance
 BizTalk<Extended\> offers the following features:
 
