@@ -43,7 +43,7 @@ It also works with your custom property schemas. Here we will write *Codito* as 
 	message.PromoteContextProperty<Customer.CompanyName>("Codito");
 
 When we look at the tracking you see that it automagically retrieves the namespace and writes the value to the context
-![Writing to the context](media\docs-writing-to-context.png)
+![Writing to the context](media/docs-writing-to-context.png)
 
 # Requirements
 In order to use this library you should meet these requirements:
