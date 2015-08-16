@@ -22,14 +22,6 @@ To interact with these BizTalk schemas you'll need to reference `Microsoft.BizTa
 You can find it here:
 > C:\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll
 
-### Reading
-
-	string action = message.ReadContextProperty<WCF.Action, string>();
-
-TBW
-
-	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
-
 ### Writing & Promoting
 
 	message.WriteContextProperty<WCF.Action>("Send");
@@ -44,6 +36,19 @@ It also works with your custom property schemas. Here we will write *Codito* as 
 
 When we look at the tracking you see that it automagically retrieves the namespace and writes the value to the context
 ![Writing to the context](media/docs-writing-to-context.png)
+
+You're not limited to strings, you can also pass in enumerations and we'll handle it!
+
+	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
+
+### Reading
+
+
+	string action = message.ReadContextProperty<WCF.Action, string>();
+
+TBW
+
+	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
 
 # Requirements
 In order to use this library you should meet these requirements:
