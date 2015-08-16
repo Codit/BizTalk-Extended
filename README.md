@@ -51,7 +51,7 @@ In order to use this library you should meet these requirements:
 - .Net Framework 4.5 or higher
 
 # License
-This project is licensed under the [MIT license](license).
+This project is licensed under the [MIT license](LICENSE).
 
 
 ![Codit Logo](assets/codit_logo.png)
