@@ -1,5 +1,7 @@
 BizTalk\<Extended\>
 ======================
+[![Join the chat at https://gitter.im/CoditEU/Mjolnir](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CoditEU/Mjolnir?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 _BizTalk\<Extended\>_ is an open-source project that will take your BizTalk development to the next level.
 
 # Features at a glance
