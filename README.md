@@ -1,6 +1,6 @@
 BizTalk\<Extended\>
 ======================
-_"BizTalk\<Extended\>"_ is an open-source project that will take your BizTalk development to the next level.
+_BizTalk\<Extended\>_ is an open-source project that will take your BizTalk development to the next level.
 
 # Features at a glance
 BizTalk<Extended\> offers the following features:
@@ -42,7 +42,7 @@ You're not limited to strings, you can also pass in enumerations and we'll handl
 	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
 
 ### Reading
-
+Reading back your values is 
 
 	string action = message.ReadContextProperty<WCF.Action, string>();
 
