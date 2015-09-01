@@ -24,7 +24,7 @@ To interact with these BizTalk schemas you'll need to reference `Microsoft.BizTa
 You can find it here:
 > C:\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll
 
-### Writing & Promoting
+### Writing & Promoting to the context
 
 	message.WriteContextProperty<WCF.Action>("Send");
 
@@ -43,18 +43,18 @@ You're not limited to strings, you can also pass in enumerations and we'll handl
 
 	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
 
-### Reading
-You can read values from the context as well, you simply specify the property you want and the type of value you are expecting.
+### Reading from the context
+You can read values from the context as well - You simply specify the property you're interested in and what type of value you are expecting it to be.
 
 	string action = message.ReadContextProperty<WCF.Action, string>();
 
-By default all properties are mandatory, in case a context property is not found a `ContextPropertyNotFoundException` will be thrown containing the *Name* & *Namespace*.
+By default all properties are mandatory. This means that when a context property is not found in the context a `ContextPropertyNotFoundException` will be thrown containing the *Name* & *Namespace* of the property.
 
-There is an alternative however where you have the ability to specify whether or not a property needs to be present in the context or not.
+However, if you only want to read an property if it is present you can mark it as optional. This allows you to read the value if it's present and otherwise receive `null` and no exception will be thrown.
 
 	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
 
-> **Remark** - Value-types will return their default value when the specified property is not present. If you want to receive a `null` you'll need to mark it as a nullable type i.e. `int?`.
+> **Remark** - Value-types will return their default value when the specified property is not present. If you want to receive a `null` you'll need to mark the expected type as a nullable type i.e. `int?`.
 
 # Requirements
 In order to use this library you should meet these requirements:
