@@ -44,13 +44,17 @@ You're not limited to strings, you can also pass in enumerations and we'll handl
 	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
 
 ### Reading
-Reading back your values is 
+You can read values from the context as well, you simply specify the property you want and the type of value you are expecting.
 
 	string action = message.ReadContextProperty<WCF.Action, string>();
 
-TBW
+By default all properties are mandatory, in case a context property is not found a `ContextPropertyNotFoundException` will be thrown containing the *Name* & *Namespace*.
+
+There is an alternative however where you have the ability to specify whether or not a property needs to be present in the context or not.
 
 	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
+
+> **Remark** - Value-types will return their default value when the specified property is not present. If you want to receive a `null` you'll need to mark it as a nullable type i.e. `int?`.
 
 # Requirements
 In order to use this library you should meet these requirements:
