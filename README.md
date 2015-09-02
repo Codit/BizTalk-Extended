@@ -11,7 +11,7 @@ BizTalk<Extended\> offers the following features:
 
 # Documentation
 ## Typed interaction with message context
-Fixed strings in code are evil and should be avoided at all times when possible to prevent typos, especially when interacting with the message context.
+Fixed strings in code are evil and should be avoided at all times when possible to prevent typos or breaking changes when a namespace changes, especially when interacting with the message context.
 
 We provide you the tools to specify the type of your property and handle it all for you. You can use your own custom property schemas or existing BizTalk schemas.
 
@@ -30,10 +30,13 @@ Here is an overview of the supported property schema types : `String`, `DateTime
 |`Int`|Yes!|
 
 ### Writing & Promoting to the context
+You can write values to the context in no time! By using the `WriteContextProperty` you can specify to which element of your property schema you want to write and what value.
+
+In this example we'll write the *Send* value to the `Action` element in the `WCF` schema.
 
 	message.WriteContextProperty<WCF.Action>("Send");
 
-TBW
+Promoting is just as easy, just use the `PromoteContextProperty` instead!
 
 	message.PromoteContextProperty<WCF.Action>("Send");
 
@@ -48,6 +51,7 @@ You're not limited to strings, you can also pass in enumerations and we'll handl
 
 	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
 
+<!-- TODO: Add example of custom object serialized in context -->
 ### Reading from the context
 You can read values from the context as well - You simply specify the property you're interested in and what type of value you are expecting it to be.
 
