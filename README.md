@@ -9,11 +9,6 @@ BizTalk<Extended\> offers the following features:
 
 - Typed interaction with the message context
 
-## Planned features
-- Generic pipeline component
-
-For a full list of the planned features, have a look at the `feature`-issues [here](https://github.com/CoditEU/Mjolnir/labels/feature).
-
 # Usage
 ## Typed interaction with message context
 Fixed strings in code are evil and should be avoided at all times when possible to prevent typos, especially when interacting with the message context.
@@ -55,6 +50,11 @@ However, if you only want to read an property if it is present you can mark it a
 	string action = message.ReadContextProperty<WCF.Action, string>(isMandatory: false);
 
 > **Remark** - Value-types will return their default value when the specified property is not present. If you want to receive a `null` you'll need to mark the expected type as a nullable type i.e. `int?`.
+
+# Planned features
+- Generic pipeline component
+
+For a full list of the planned features, have a look at the `feature`-issues [here](https://github.com/CoditEU/Mjolnir/labels/feature).
 
 # Requirements
 In order to use this library you should meet these requirements:
