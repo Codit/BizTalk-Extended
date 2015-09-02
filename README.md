@@ -19,16 +19,6 @@ To interact with these BizTalk schemas you'll need to reference `Microsoft.BizTa
 You can find it here:
 > C:\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll
 
-### Supported schema types
-Here is an overview of the supported property schema types : `String`, `DateTime`, `Decimal`, `Int`.
-
-|Schema Type|Supported?|
-|---|---|
-|`String`|Yes!|
-|`DateTime`|Yes!|
-|`Decimal`|Yes!|
-|`Int`|Yes!|
-
 ### Writing & Promoting to the context
 You can write values to the context in no time! By using the `WriteContextProperty` you can specify to which element of your property schema you want to write and what value.
 
@@ -51,7 +41,6 @@ You're not limited to strings, you can also pass in enumerations and we'll handl
 
 	message.PromoteContextProperty<Customer.SupportPlan>(SupportPlan.FirstLine);
 
-<!-- TODO: Add example of custom object serialized in context -->
 ### Reading from the context
 You can read values from the context as well - You simply specify the property you're interested in and what type of value you are expecting it to be.
 
