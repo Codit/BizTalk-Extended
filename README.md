@@ -9,7 +9,7 @@ BizTalk<Extended\> offers the following features:
 
 - Typed interaction with the message context
 
-# Usage
+# Documentation
 ## Typed interaction with message context
 Fixed strings in code are evil and should be avoided at all times when possible to prevent typos, especially when interacting with the message context.
 
@@ -18,6 +18,7 @@ We provide you the tools to specify the type of your property and handle it all 
 To interact with these BizTalk schemas you'll need to reference `Microsoft.BizTalk.GlobalPropertySchemas.dll` that contains all the types.
 You can find it here:
 > C:\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll
+
 
 ### Writing & Promoting to the context
 
