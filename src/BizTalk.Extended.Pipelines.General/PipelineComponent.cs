@@ -56,20 +56,11 @@ namespace BizTalk.Extended.Pipelines.General
             Guard.NotNull(pipelineContext, "pipelineContext");
             Guard.NotNull(message, "message");
 
-            IBaseMessage returnMessage = null;
+            IBaseMessage returnMessage = message;
 
-            try
+            if (IsEnabled)
             {
-                returnMessage = message;
-
-                if (IsEnabled)
-                {
-                    returnMessage = ExecuteInternal(pipelineContext, message);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
+                returnMessage = ExecuteInternal(pipelineContext, message);
             }
 
             return returnMessage;
@@ -81,11 +72,11 @@ namespace BizTalk.Extended.Pipelines.General
         {
             get
             {
-              return IntPtr.Zero; 
+                return IntPtr.Zero;
             }
         }
 
-        public IEnumerator Validate(object projectSystem)
+        public virtual IEnumerator Validate(object projectSystem)
         {
             return null;
         }
