@@ -60,13 +60,11 @@ namespace BizTalk.Extended.Pipelines.General
 
             try
             {
+                returnMessage = message;
+
                 if (IsEnabled)
                 {
                     returnMessage = ExecuteInternal(pipelineContext, message);
-                }
-                else
-                {
-                    returnMessage = message;
                 }
             }
             catch (Exception)
