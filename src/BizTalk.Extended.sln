@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ADBE4A9F-AB17-4AD3-8807-7ABC7EC89292}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Pipelines.Extensions", "BizTalk.Extended.Pipelines.Extensions\BizTalk.Extended.Pipelines.Extensions.csproj", "{1AC3123A-5232-4753-904E-8AEBFC7A6BF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Pipelines.Extensions.UnitTests", "BizTalk.Extended.Pipelines.Extensions.UnitTests\BizTalk.Extended.Pipelines.Extensions.UnitTests.csproj", "{1D5FA2F2-8351-41BF-9A13-B3757C280B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Pipelines.General", "BizTalk.Extended.Pipelines.General\BizTalk.Extended.Pipelines.General.csproj", "{98B67945-DAFC-403C-A4A4-69861CE00984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{1D5FA2F2-8351-41BF-9A13-B3757C280B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D5FA2F2-8351-41BF-9A13-B3757C280B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D5FA2F2-8351-41BF-9A13-B3757C280B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B67945-DAFC-403C-A4A4-69861CE00984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B67945-DAFC-403C-A4A4-69861CE00984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B67945-DAFC-403C-A4A4-69861CE00984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B67945-DAFC-403C-A4A4-69861CE00984}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
