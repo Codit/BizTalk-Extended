@@ -14,8 +14,6 @@ namespace BizTalk.Extended.Core.Utilities
         /// <returns></returns>
         public static object SerializeToContextPropertyValue<TContextProperty>(object value) where TContextProperty : MessageContextPropertyBase, new()
         {
-            Guard.NotNull(value, "value");
-
             var contextProperty = new TContextProperty();
             object actualValue = value;
 
@@ -35,8 +33,6 @@ namespace BizTalk.Extended.Core.Utilities
         /// <returns></returns>
         public static TExpected DeserializeFromContextPropertyValue<TExpected>(object value)
         {
-            Guard.NotNull(value, "value");
-
             if (typeof(TExpected).IsEnum)
             {
                 return (TExpected)Enum.Parse(typeof(TExpected), value as string);
