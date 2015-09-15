@@ -1,9 +1,8 @@
 ﻿using BizTalk.Extended.Core.Exceptions;
 using BizTalk.Extended.Core.Guards;
 using BizTalk.Extended.Core.Utilities;
-using Microsoft.XLANGs.BaseTypes;
 
-namespace BizTalk.Extended.Core.Extensions
+namespace Microsoft.XLANGs.BaseTypes
 {
     public static class XLANGMessageExtensions
     {
