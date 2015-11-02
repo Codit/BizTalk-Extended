@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>BizTalk.Extended.Orchestration.Extensions</id>
+    <id>BizTalk.Extended.Pipelines.Extensions</id>
     <version>$version$</version>
-    <title>BizTalk&lt;Extended&gt; Orchestration Extensions</title>
+    <title>BizTalk&lt;Extended&gt; Pipeline Extensions</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/CoditEU/Mjolnir</projectUrl>
