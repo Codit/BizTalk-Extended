@@ -58,7 +58,6 @@
     <None Include="..\BizTalk.Extended.snk">
       <Link>BizTalk.Extended.snk</Link>
     </None>
-    <None Include="BizTalk.Extended.Pipelines.Extensions.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BizTalk.Extended.Core\BizTalk.Extended.Core.csproj">
