@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <projectUrl>https://github.com/CoditEU/Mjolnir</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Extensions for when building methods used in orchestrations.</description>
     <copyright>Copyright 2015</copyright>
     <tags>BizTalk Pipeline Mjolnir Codit</tags>
   </metadata>
