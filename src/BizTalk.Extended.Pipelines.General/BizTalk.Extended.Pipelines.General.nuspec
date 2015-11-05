@@ -12,7 +12,7 @@
     <copyright>Copyright 2015</copyright>
     <tags>BizTalk Pipeline Mjolnir Codit</tags>
     <dependencies>
-      <dependency id="BizTalk.Extended.Pipelines.Extensions" Version="$version" />
+      <dependency id="BizTalk.Extended.Pipelines.Extensions" Version="$version$" />
     </dependencies>
   </metadata>
   <files>
