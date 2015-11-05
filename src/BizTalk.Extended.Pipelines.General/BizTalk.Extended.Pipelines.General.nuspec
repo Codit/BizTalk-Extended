@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<package>
+<package >
   <metadata>
-    <id>BizTalk.Extended.Pipelines.Extensions</id>
+    <id>BizTalk.Extended.Pipelines.General</id>
     <version>$version$</version>
-    <title>BizTalk&lt;Extended&gt; Pipeline Extensions</title>
+    <title>BizTalk&lt;Extended&gt; - Pipeline Components</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/CoditEU/Mjolnir</projectUrl>
@@ -11,5 +11,11 @@
     <description>$description$</description>
     <copyright>Copyright 2015</copyright>
     <tags>BizTalk Pipeline Mjolnir Codit</tags>
+    <dependencies>
+      <dependency id="BizTalk.Extended.Pipelines.Extensions" Version="$version" />
+    </dependencies>
   </metadata>
+  <files>
+    <file src="bin\Release\BizTalk.Extended.Core.dll" target="lib\net45" />
+  </files>
 </package>
