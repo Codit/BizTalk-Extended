@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyDescription("Extensions that take BizTalk pipeline development to the next level.")]
+[assembly: AssemblyDescription("BizTalk<Extended> takes your BizTalk development to the next level.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sam Neirinck, Tom Kerkhove, Glenn Colpaert, Jonathan Maes")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
