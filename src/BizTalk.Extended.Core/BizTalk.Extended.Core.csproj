@@ -55,6 +55,7 @@
     <Compile Include="Exceptions\ContextPropertyNotFoundException.cs" />
     <Compile Include="Guards\Guard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ContextPropertyValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\BizTalk.Extended.snk">
