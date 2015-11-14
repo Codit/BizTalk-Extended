@@ -13,11 +13,6 @@ namespace BizTalk.Extended.Pipeline.Core.UnitTests.Extensions
         private const string ActionPropertyName = "Action";
         private const string ActionPropertyNamespace = "http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties";
 
-        // TODO: Tests where a value type is null and not marked as nullable
-        // TODO: Tests where a value type is null and marked as nullable
-        // TODO: Tests where an enum value is null and not marked as nullable
-        // TODO: Tests where an enum value is null and marked as nullable
-
         [Fact]
         public void PromoteContextProperty_MessageIsNull_ThrowsArgumentNullException()
         {

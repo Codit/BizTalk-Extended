@@ -40,10 +40,10 @@ namespace BizTalk.Extended.Pipelines.General
         /// <summary>
         /// Method that will contain the actual execute implementation.
         /// </summary>
-        /// <param name="pielineContext">Context of the pipeline.</param>
+        /// <param name="pipelineContext">Context of the pipeline.</param>
         /// <param name="message">message that passes through the pipeline.</param>
         /// <returns></returns>
-        protected abstract IBaseMessage ExecuteInternal(IPipelineContext pielineContext, IBaseMessage message);
+        protected abstract IBaseMessage ExecuteInternal(IPipelineContext pipelineContext, IBaseMessage message);
 
         /// <summary>
         /// Public execute metod of the pipeline.

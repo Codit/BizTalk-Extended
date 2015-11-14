@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Pipelines.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Pipelines.General", "BizTalk.Extended.Pipelines.General\BizTalk.Extended.Pipelines.General.csproj", "{98B67945-DAFC-403C-A4A4-69861CE00984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Extended.Orchestrations.Extensions.UnitTests", "BizTalk.Extended.Orchestrations.Extensions.UnitTests\BizTalk.Extended.Orchestrations.Extensions.UnitTests.csproj", "{E85114F0-FAA4-43BB-A15C-001366CFAF52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{98B67945-DAFC-403C-A4A4-69861CE00984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98B67945-DAFC-403C-A4A4-69861CE00984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98B67945-DAFC-403C-A4A4-69861CE00984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85114F0-FAA4-43BB-A15C-001366CFAF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85114F0-FAA4-43BB-A15C-001366CFAF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85114F0-FAA4-43BB-A15C-001366CFAF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85114F0-FAA4-43BB-A15C-001366CFAF52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9F7F0D6D-0F39-4AE8-B4C2-1655DC638DBD} = {FBFEF9E2-F435-4A58-BDD8-D7BFABE12312}
 		{1D5FA2F2-8351-41BF-9A13-B3757C280B27} = {FBFEF9E2-F435-4A58-BDD8-D7BFABE12312}
+		{E85114F0-FAA4-43BB-A15C-001366CFAF52} = {FBFEF9E2-F435-4A58-BDD8-D7BFABE12312}
 	EndGlobalSection
 EndGlobal
