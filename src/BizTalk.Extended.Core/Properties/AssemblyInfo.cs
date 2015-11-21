@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BizTalk.Extended.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Core libraries for BizTalk<Extended> that takes BizTalk development to the next level.")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("06711e89-9bc2-486f-866e-2659b820fcdf")]

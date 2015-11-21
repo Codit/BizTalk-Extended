@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BizTalk.Extended.Pipelines.Extensions")]
-[assembly: AssemblyDescription("Extensions that take BizTalk pipeline development to the next level.")]
+[assembly: AssemblyDescription("Pipeline Component extensions that takes BizTalk development to the next level.")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("adc2f501-f327-48e2-83d9-07b91721280f")]
