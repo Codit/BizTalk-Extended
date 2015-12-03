@@ -10,9 +10,9 @@ BizTalk<Extended\> offers the following features:
 - Typed interaction with the message context
 
 # Installation
-If you want to include BizTalk<Extended> in your project, you can install it directly from NuGet.
+If you want to include BizTalk<Extended\> in your project, you can install it directly from NuGet.
 
-To install BizTalk<Extended>, run the following command in the Package Manager Console:
+To install BizTalk<Extended\>, run the following command in the Package Manager Console:
 
 	PM> Install-Package BizTalk.Extended.Pipelines.General	
 	PM> Install-Package BizTalk.Extended.Pipelines.Extensions
