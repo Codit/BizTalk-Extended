@@ -8,6 +8,7 @@ _BizTalk\<Extended\>_ is an open-source project that will take your BizTalk deve
 BizTalk<Extended\> offers the following features:
 
 - Typed interaction with the message context
+- Generic pipeline component
 
 # Installation
 If you want to include BizTalk<Extended\> in your project, you can install it directly from NuGet.
@@ -64,8 +65,6 @@ However, if you only want to read an property if it is present you can mark it a
 > **Remark** - Value-types will return their default value when the specified property is not present. If you want to receive a `null` you'll need to mark the expected type as a nullable type i.e. `int?`.
 
 # Planned features
-- Generic pipeline component
-
 For a full list of the planned features, have a look at the `feature`-issues [here](https://github.com/CoditEU/Mjolnir/labels/feature).
 
 # Requirements
