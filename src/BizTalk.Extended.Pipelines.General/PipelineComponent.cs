@@ -111,14 +111,14 @@ namespace BizTalk.Extended.Pipelines.General
             IsEnabled = true;
         }
 
-        public void Load(IPropertyBag propertyBag, int errorLog)
+        public virtual void Load(IPropertyBag propertyBag, int errorLog)
         {
             Guard.NotNull(propertyBag, "propertyBag");
 
             IsEnabled = LoadProperty(propertyBag, x => x.IsEnabled, IsEnabled);
         }
 
-        public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
+        public virtual void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
         {
             Guard.NotNull(propertyBag, "propertyBag");
 
