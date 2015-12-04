@@ -1,52 +1,64 @@
 ﻿using BizTalk.Extended.Core.Exceptions;
 using BizTalk.Extended.Core.Guards;
-using Microsoft.XLANGs.BaseTypes;
-using System;
+using BizTalk.Extended.Core.Utilities;
 
-namespace BizTalk.Extended.Core.Extensions
+namespace Microsoft.XLANGs.BaseTypes
 {
     public static class XLANGMessageExtensions
     {
-        public static void WriteContextProperty<TContextProperty>(this XLANGMessage msg, object value) where TContextProperty : MessageContextPropertyBase, new()
+        /// <summary>
+        /// Writes to the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <param name="message">BizTalk pipeline message</param>
+        /// <param name="value">Requested value of the property</param>
+        public static void WriteContextProperty<TContextProperty>(this XLANGMessage message, object value) where TContextProperty : MessageContextPropertyBase, new()
         {
-            Guard.NotNull(msg, "msg");
+            Guard.NotNull(message, "message");
 
-            var contextProperty = new TContextProperty();
-            object actualValue = value;
+            object actualValue = ContextPropertySerializer.SerializeToContextPropertyValue<TContextProperty>(value);
 
-            if (typeof(TContextProperty).IsEnum || value is Enum)
-            {
-                actualValue = value.ToString();
-            }
-
-            msg.SetPropertyValue(typeof(TContextProperty), actualValue);
+            message.SetPropertyValue(typeof(TContextProperty), actualValue);
         }
 
-        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this XLANGMessage msg)
+        /// <summary>
+        /// Reads a mandatory property in the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="message">BizTalk pipeline message</param>
+        /// <returns>Value from the property, if present</returns>
+        /// <exception cref="BizTalk.Extended.Core.Exceptions.ContextPropertyNotFoundException">Thrown when a mandatory property is not present</exception>
+        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this XLANGMessage message)
             where TContextProperty : MessageContextPropertyBase, new()
         {
-            return ReadContextProperty<TContextProperty, TExpected>(msg, true);
+            Guard.NotNull(message, "message");
+
+            return ReadContextProperty<TContextProperty, TExpected>(message, isMandatory: true);
         }
 
-        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this XLANGMessage msg, bool isMandatory)
-            where TContextProperty : MessageContextPropertyBase, new()
+        /// <summary>
+        /// Reads a property in the context of the message
+        /// </summary>
+        /// <typeparam name="TContextProperty">Type of the target property</typeparam>
+        /// <typeparam name="TExpected">Expected type of the value</typeparam>
+        /// <param name="message">BizTalk pipeline message</param>
+        /// <param name="isMandatory">Indication if it is mandatory for the property to be present</param>
+        /// <returns>Value from the property, if present</returns>
+        /// <exception cref="BizTalk.Extended.Core.Exceptions.ContextPropertyNotFoundException">Thrown when a mandatory property is not present</exception>
+        public static TExpected ReadContextProperty<TContextProperty, TExpected>(this XLANGMessage message, bool isMandatory) where TContextProperty : MessageContextPropertyBase, new()
         {
-            Guard.NotNull(msg, "msg");
+            Guard.NotNull(message, "message");
 
-            var contextProperty = new TContextProperty();
-            object value = msg.GetPropertyValue(typeof(TContextProperty));
-
+            object value = message.GetPropertyValue(typeof(TContextProperty));
             if (value == null && isMandatory)
             {
-                throw new ContextPropertyNotFoundException(contextProperty.Name.Name, contextProperty.Name.Namespace);
+                var propertyInstance = new TContextProperty();
+                throw new ContextPropertyNotFoundException(propertyInstance.Name.Name, propertyInstance.Name.Namespace);
             }
 
-            if (typeof(TExpected).IsEnum)
-            {
-                return (TExpected)Enum.Parse(typeof(TExpected), value as string);
-            }
-
-            return (TExpected)value;
+            TExpected convertedValue = ContextPropertySerializer.DeserializeFromContextPropertyValue<TExpected>(value);
+            return convertedValue;
         }
     }
 }
