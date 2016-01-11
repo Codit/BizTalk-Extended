@@ -1,6 +1,6 @@
 ﻿using BizTalk.Extended.Core.Exceptions;
 using BizTalk.Extended.Core.Guards;
-using BizTalk.Extended.Core.Utilities;
+using BizTalk.Extended.Orchestrations.Core.Utilities;
 
 namespace Microsoft.XLANGs.BaseTypes
 {

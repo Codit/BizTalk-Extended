@@ -1,8 +1,7 @@
-﻿using BizTalk.Extended.Core.Guards;
-using Microsoft.XLANGs.BaseTypes;
+﻿using Microsoft.XLANGs.BaseTypes;
 using System;
 
-namespace BizTalk.Extended.Core.Utilities
+namespace BizTalk.Extended.Orchestrations.Core.Utilities
 {
     public class ContextPropertySerializer
     {
