@@ -57,8 +57,7 @@ namespace Microsoft.XLANGs.BaseTypes
                 throw new ContextPropertyNotFoundException(propertyInstance.Name.Name, propertyInstance.Name.Namespace);
             }
 
-            TExpected convertedValue = ContextPropertySerializer.DeserializeFromContextPropertyValue<TExpected>(value);
-            return convertedValue;
+            return ContextPropertySerializer.DeserializeFromContextPropertyValue<TExpected>(value);
         }
     }
 }

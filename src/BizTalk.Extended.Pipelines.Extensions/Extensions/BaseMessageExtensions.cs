@@ -4,6 +4,7 @@ using Microsoft.XLANGs.BaseTypes;
 
 using BizTalk.Extended.Core.Exceptions;
 using BizTalk.Extended.Core.Guards;
+using BizTalk.Extended.Core.Utilities;
 
 namespace Microsoft.BizTalk.Message.Interop
 {
@@ -64,7 +65,7 @@ namespace Microsoft.BizTalk.Message.Interop
 
             if (typeof(TContextProperty).IsEnum || value is Enum)
             {
-                actualValue = value.ToString();
+                actualValue = ContextPropertySerializer.SerializeToContextPropertyValue<TContextProperty>(value);
             }
 
             WriteContextProperty(message, contextProperty.Name.Name, contextProperty.Name.Namespace, actualValue);
@@ -100,7 +101,7 @@ namespace Microsoft.BizTalk.Message.Interop
         {
             Guard.NotNull(message, "message");
 
-            return ReadContextProperty<TContextProperty, TExpected>(message, true);
+            return ReadContextProperty<TContextProperty, TExpected>(message, isMandatory: true);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace Microsoft.BizTalk.Message.Interop
             Guard.NotNull(message, "message");
             Guard.NotNullOrWhitespace(name, "name");
 
-            return ReadContextProperty<TExpected>(message, name, ns, true);
+            return ReadContextProperty<TExpected>(message, name, ns, isMandatory: true);
         }
 
         /// <summary>
@@ -160,23 +161,7 @@ namespace Microsoft.BizTalk.Message.Interop
                 throw new ContextPropertyNotFoundException(name, ns);
             }
 
-            if (typeof(TExpected).IsEnum)
-            {
-                return (TExpected)Enum.Parse(typeof(TExpected), value as string);
-            }
-
-            Type underlyingType = Nullable.GetUnderlyingType(typeof(TExpected));
-            if (underlyingType != null && underlyingType.IsEnum)
-            {
-                if (value == null)
-                {
-                    return default(TExpected);
-                }
-
-                return (TExpected)Enum.Parse(underlyingType, value as string);
-            }
-
-            return (TExpected)value;
+            return ContextPropertySerializer.DeserializeFromContextPropertyValue<TExpected>(value);
         }
     }
 }
